@@ -1,7 +1,22 @@
+import { async } from "@firebase/util";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user, signOut } = UserAuth();
+  const navigate = useNavigate();
+  console.log(user);
+
+  const handleLogOut = async () => {
+    try {
+      await signOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
       <Link to="/">
@@ -9,17 +24,30 @@ const Navbar = () => {
           NETFLIX
         </h1>
       </Link>
+
       <div className="flex flex-row">
-        <Link to="/login">
-          <button className="text-white cursor-pointer px-4 py-2 rounded-md">
-            Sign In
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer">
-            Sign Up
-          </button>
-        </Link>
+        {user?.email ? (
+          <>
+            <Link to="/account">
+              <button className="text-white cursor-pointer px-4 py-2 rounded-md">
+                Account
+              </button>
+            </Link>
+
+            <button
+              onClick={handleLogOut}
+              className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/signup">
+            <button className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer">
+              Sign Up
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
