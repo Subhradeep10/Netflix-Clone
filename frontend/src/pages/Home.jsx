@@ -2,10 +2,11 @@ import React from "react";
 import Main from "../components/Main";
 import Row from "../components/Row";
 import request from "../config";
-
+import MetaData from "../utils/MetaData";
 const Home = () => {
   return (
     <>
+      <MetaData title="Netflix India-Watch TV Shows Online, Watch Movies Online" />
       <Main />
       <Row rowID="1" title="UpComing" fetchURL={request.requestUpcoming} />
       <Row rowID="2" title="Popular" fetchURL={request.requestPopular} />
