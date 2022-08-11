@@ -8,8 +8,12 @@ const Home = () => {
     <>
       <MetaData title="Netflix India-Watch TV Shows Online, Watch Movies Online" />
       <Main />
-      <Row rowID="1" title="UpComing" fetchURL={request.requestUpcoming} />
-      <Row rowID="2" title="Popular" fetchURL={request.requestPopular} />
+      <Row
+        rowID="1"
+        title="Recently Added"
+        fetchURL={request.requestUpcoming}
+      />
+      <Row rowID="2" title="Trending Now" fetchURL={request.requestPopular} />
       <Row rowID="3" title="Top Rated" fetchURL={request.requestTopRated} />
       <Row rowID="4" title="Horror" fetchURL={request.requestHorror} />
     </>
