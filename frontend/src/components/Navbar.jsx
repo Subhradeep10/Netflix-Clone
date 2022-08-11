@@ -1,16 +1,15 @@
-import { async } from "@firebase/util";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { user, signOut } = UserAuth();
+  const { user, logOut } = UserAuth();
   const navigate = useNavigate();
   console.log(user);
 
   const handleLogOut = async () => {
     try {
-      await signOut();
+      await logOut();
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -36,17 +35,24 @@ const Navbar = () => {
 
             <button
               onClick={handleLogOut}
-              className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer"
+              className="text-white cursor-pointer px-4 py-2 rounded-md"
             >
               Logout
             </button>
           </>
         ) : (
-          <Link to="/signup">
-            <button className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer">
-              Sign Up
-            </button>
-          </Link>
+          <>
+            <Link to="/login">
+              <button className=" text-white cursor-pointer px-4 py-2 rounded-md">
+                Sign In
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer">
+                Sign Up
+              </button>
+            </Link>
+          </>
         )}
       </div>
     </div>
