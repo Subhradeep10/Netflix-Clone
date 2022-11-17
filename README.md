@@ -1,6 +1,6 @@
 <h2 align="center">
 
-  ![](https://c.tenor.com/zQ6H2k7HwGcAAAAC/netflix-netflix-logo.gif)
+![](https://c.tenor.com/zQ6H2k7HwGcAAAAC/netflix-netflix-logo.gif)
   <br>
   Netflix Clone Built Using React.JS & Firebase
   
@@ -44,4 +44,5 @@ You can refer to the following articles on **_basics of Git and Github and also 
    </td>
   </tr>
 </table>
+
 
